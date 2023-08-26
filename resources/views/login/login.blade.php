@@ -49,7 +49,8 @@
                         Sistem Informasi Apotek Fortuna
                       </h1>
                     </div>
-                    <form class="user">
+                    <form class="user" method="POST" action="/login">
+                        @csrf
                       <div class="form-group">
                         <input
                           type="email"
@@ -57,7 +58,7 @@
                           id="exampleInputEmail"
                           aria-describedby="emailHelp"
                           placeholder="Enter Email Address..."
-                        />
+                         name="email"/>
                       </div>
                       <div class="form-group">
                         <input
@@ -65,7 +66,7 @@
                           class="form-control form-control-user"
                           id="exampleInputPassword"
                           placeholder="Password"
-                        />
+                         name="password"/>
                       </div>
                       <div class="form-group">
                         <div class="custom-control custom-checkbox small">
@@ -79,12 +80,12 @@
                           >
                         </div>
                       </div>
-                      <a
-                        href="index.html"
+                      <button
                         class="btn btn-primary btn-user btn-block"
+                        type="submit"
                       >
                         Login
-                      </a>
+                      </button>
                     </form>
                     <hr />
                     <div class="text-center">

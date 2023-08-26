@@ -83,6 +83,10 @@
     <!-- Bootstrap core JavaScript-->
     <script src="jquery/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- font awesome js --}}
+    <script src="https://kit.fontawesome.com/1f3ad3292f.js" crossorigin="anonymous"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="jquery/jquery.easing.min.js"></script>

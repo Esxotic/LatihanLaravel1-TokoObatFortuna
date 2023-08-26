@@ -93,15 +93,15 @@ class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
       class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
       aria-labelledby="userDropdown"
     >
-      <a
-        class="dropdown-item"
-        href="#"
+      <form method="POST" action="/logout"
         data-toggle="modal"
         data-target="#logoutModal"
       >
-      <i class="fa fa-sign-out text-gray-400" aria-hidden="true"></i>
+      @csrf
+      <button type="submit" class="dropdown-item"><i class="fa fa-sign-out text-gray-400" aria-hidden="true"></i>
         Logout
-      </a>
+    </button>
+      </form>
     </div>
   </li>
 </ul>
