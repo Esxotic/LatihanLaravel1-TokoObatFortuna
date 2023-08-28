@@ -93,15 +93,26 @@ class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
       class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
       aria-labelledby="userDropdown"
     >
-      <form method="POST" action="/logout"
+      {{-- <form method="POST" action="/logout"
         data-toggle="modal"
         data-target="#logoutModal"
       >
-      @csrf
-      <button type="submit" class="dropdown-item"><i class="fa fa-sign-out text-gray-400" aria-hidden="true"></i>
-        Logout
-    </button>
-      </form>
+        @csrf
+        <button type="submit" class="dropdown-item"><i class="fa fa-sign-out text-gray-400" aria-hidden="true"></i>
+            Logout
+        </button>
+      </form> --}}
+        <a
+            class="dropdown-item"
+            href="#"
+            data-toggle="modal"
+            data-target="#logoutModal"
+            >
+            <i
+                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+            ></i>
+            Logout
+        </a>
     </div>
   </li>
 </ul>
