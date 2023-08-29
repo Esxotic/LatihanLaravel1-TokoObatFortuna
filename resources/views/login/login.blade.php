@@ -90,7 +90,7 @@
                     <hr />
                     <div class="text-center">
                       <a class="small" href="/register"
-                        >Forgot Password?</a
+                        >Don't have an account? Registration!</a
                       >
                     </div>
                   </div>
