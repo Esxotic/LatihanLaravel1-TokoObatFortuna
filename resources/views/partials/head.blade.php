@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="shortcut icon" href="img/Untitled.ico" type="image/x-icon" />
-    <title>Apotek Fortuna - Dashboard</title>
+    <title>Apotek Fortuna - {{ $title }}</title>
 
     <!-- Custom fonts for this template-->
     <link

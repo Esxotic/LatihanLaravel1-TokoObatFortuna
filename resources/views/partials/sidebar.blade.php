@@ -23,23 +23,23 @@ id="accordionSidebar"
     <div class="sidebar-heading">Menu</div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <li class="nav-item {{ ($active === 'Dashboard') ? 'active' : '' }}">
+    <a class="nav-link" href="/">
         <i class="fa fa-tachometer" aria-hidden="true"></i>
         <span>Dashboard</span></a
     >
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-    <a class="nav-link" href="DaftarObat.html">
+    <li class="nav-item {{ ($active === 'Daftar Obat') ? 'active' : '' }}">
+    <a class="nav-link" href="/daftar-obat">
         <i class="fa fa-plus-square" aria-hidden="true"></i>
         <span>Daftar Obat</span></a
     >
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <li class="nav-item {{ ($active === 'transaksi') ? 'active' : '' }}">
     <a class="nav-link" href="Transaksi.html">
         <i class="fa fa-exchange" aria-hidden="true"></i>
         <span>Transaksi</span></a

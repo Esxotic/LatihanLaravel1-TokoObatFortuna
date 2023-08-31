@@ -16,11 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', [
+        'title' => 'Dashboard',
+        'heading' => 'Dashboard',
+        'active' => 'Dashboard'
+    ]);
 })->middleware('auth');
+
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'autenticate']);
+
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/daftar-obat', function () {
+    return view('daftar-obat.index', [
+        'title' => 'Daftar Obat',
+        'heading' => 'Daftar Obat',
+        'active' => 'Daftar Obat',
+    ]);
+});
