@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\obat;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,14 @@ Route::get('/daftar-obat', function () {
     return view('daftar-obat.index', [
         'title' => 'Daftar Obat',
         'heading' => 'Daftar Obat',
+        'active' => 'Daftar Obat',
+        'obats' => obat::all()
+    ]);
+});
+Route::get('/tambahData', function () {
+    return view('daftar-obat.fromTambah', [
+        'title' => 'Form Tambah Data',
+        'heading' => 'Form Tambah Data',
         'active' => 'Daftar Obat',
     ]);
 });
