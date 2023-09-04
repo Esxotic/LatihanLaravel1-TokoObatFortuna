@@ -24,9 +24,9 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $obat->nama_obat }}</td>
-                    <td>Obat Bebas</td>
+                    <td>{{ $obat->jenis->name }}</td>
                     <td>{{ $obat->harga }}</td>
-                    <td>Anak-anak</td>
+                    <td>{{ $obat->umur->name }}</td>
                     <td>{{ $obat->stok }}</td>
                     <td colspan="2">
                         <button class="btn btn-warning">

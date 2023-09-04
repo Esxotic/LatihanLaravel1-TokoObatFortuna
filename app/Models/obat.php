@@ -12,4 +12,13 @@ class obat extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function jenis()
+    {
+        return $this->belongsTo(JenisObat::class);
+    }
+    public function umur()
+    {
+        return $this->belongsTo(Umur::class);
+    }
 }

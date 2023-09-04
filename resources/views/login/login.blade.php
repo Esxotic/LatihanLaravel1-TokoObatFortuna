@@ -54,19 +54,34 @@
                       <div class="form-group">
                         <input
                           type="email"
-                          class="form-control form-control-user"
+                          name="email"
+                          class="form-control form-control-user @error('email')
+                              is-invalid
+                          @enderror"
                           id="exampleInputEmail"
                           aria-describedby="emailHelp"
                           placeholder="Enter Email Address..."
-                         name="email"/>
+                          value="{{ old('email') }}">
+                         @error('email')
+                             <div class="invalid-feedback">
+                                {{ $message }}
+                             </div>
+                         @enderror
                       </div>
                       <div class="form-group">
                         <input
                           type="password"
-                          class="form-control form-control-user"
+                          class="form-control form-control-user @error('password')
+                              is-invalid
+                          @enderror"
                           id="exampleInputPassword"
                           placeholder="Password"
-                         name="password"/>
+                         name="password">
+                         @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <div class="custom-control custom-checkbox small">

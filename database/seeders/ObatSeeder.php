@@ -15,6 +15,8 @@ class ObatSeeder extends Seeder
     {
         obat::create([
             'nama_obat' => 'Imodium',
+            'jenis_id' => 1,
+            'umur_id' => 2,
             'harga' => 25000,
             'stok' => 24
         ]);

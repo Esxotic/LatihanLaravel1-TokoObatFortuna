@@ -39,17 +39,38 @@
                             <form class="user" action="/register" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user @error('email')
+                                        is-invalid
+                                    @enderror" id="exampleInputEmail"
                                         placeholder="Email Address" name="email">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user @error('password')
+                                            is-invalid
+                                        @enderror"
                                             id="exampleInputPassword" placeholder="Password" name="password">
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user @error('RepeatPassword')
+                                            is-invalid
+                                        @enderror"
                                             id="exampleRepeatPassword" placeholder="Repeat Password" name="RepeatPassword">
+                                        @error('RepeatPassword')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                         @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
