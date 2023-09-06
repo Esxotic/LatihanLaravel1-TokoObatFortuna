@@ -85,7 +85,7 @@ class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
       >
       <img
         class="img-profile rounded-circle"
-        src="img/_.jpg"
+        src="/img/_.jpg"
       />
     </a>
     <!-- Dropdown - User Information -->

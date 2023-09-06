@@ -3,7 +3,7 @@
 @section('container')
     <!-- Area Chart -->
     <div class="col-xl-12 col-lg-7 mt-n2">
-      <a href="/tambahData" class="btn btn-primary btntambah"
+      <a href="daftar-obat/create" class="btn btn-primary btntambah"
         >Tambah Data</a
       >
       <div class="card shadow mb-4 mt-2">

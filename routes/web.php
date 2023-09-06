@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaftarObatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Models\obat;
@@ -32,18 +33,19 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/daftar-obat', function () {
-    return view('daftar-obat.index', [
-        'title' => 'Daftar Obat',
-        'heading' => 'Daftar Obat',
-        'active' => 'Daftar Obat',
-        'obats' => obat::all()
-    ]);
-});
-Route::get('/tambahData', function () {
-    return view('daftar-obat.fromTambah', [
-        'title' => 'Form Tambah Data',
-        'heading' => 'Form Tambah Data',
-        'active' => 'Daftar Obat',
-    ]);
-});
+// Route::get('/daftar-obat', function () {
+//     return view('daftar-obat.index', [
+//         'title' => 'Daftar Obat',
+//         'heading' => 'Daftar Obat',
+//         'active' => 'Daftar Obat',
+//         'obats' => obat::all()
+//     ]);
+// });
+Route::resource('/daftar-obat', DaftarObatController::class)->middleware('auth');
+// Route::get('/tambahData', function () {
+//     return view('daftar-obat.fromTambah', [
+//         'title' => 'Form Tambah Data',
+//         'heading' => 'Form Tambah Data',
+//         'active' => 'Daftar Obat',
+//     ]);
+// });

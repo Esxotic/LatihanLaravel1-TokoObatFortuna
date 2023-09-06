@@ -10,7 +10,7 @@ id="accordionSidebar"
     >
     <div class="sidebar-brand-icon">
         <i
-        ><img src="img/Untitled2.ico" alt="" class="img-circle" id="logo"
+        ><img src="/img/Untitled2.ico" alt="" class="img-circle" id="logo"
         /></i>
     </div>
     <div class="sidebar-brand-text mx-3">Fortuna</div>
