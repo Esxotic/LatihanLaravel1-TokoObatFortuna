@@ -30,7 +30,7 @@
                     <td>{{ $obat->stok }}</td>
                     <td colspan="2">
                         <button class="btn btn-warning">
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                        <a href="{{ route('daftar-obat.edit',$obat) }}"><i class="fa fa-wrench" aria-hidden="true"></i></a>
                         </button>
                         <button class="btn btn-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i>

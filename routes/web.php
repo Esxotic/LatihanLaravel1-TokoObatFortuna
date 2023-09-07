@@ -41,7 +41,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 //         'obats' => obat::all()
 //     ]);
 // });
-Route::resource('/daftar-obat', DaftarObatController::class)->middleware('auth');
+Route::resource('/daftar-obat', DaftarObatController::class)->except('show')->middleware('auth');
 // Route::get('/tambahData', function () {
 //     return view('daftar-obat.fromTambah', [
 //         'title' => 'Form Tambah Data',
