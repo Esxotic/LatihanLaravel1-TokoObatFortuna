@@ -9,12 +9,12 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="img/Untitled.ico" type="image/x-icon" />
-    <title>Apotek Fortuna - Dashboard</title>
+    <link rel="shortcut icon" href="/img/Untitled.ico" type="image/x-icon" />
+    <title>Apotek Fortuna - {{ $title }}</title>
 
     <!-- Custom fonts for this template-->
     <link
-      href="css/all.min.css"
+      href="/css/all.min.css"
       rel="stylesheet"
       type="text/css"
     />
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
     <style>
       img#logo {
         filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));

@@ -17,7 +17,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+              <h1 class="h3 mb-0 text-gray-800">{{ $heading }}</h1>
             </div>
 
             <!-- Content Row -->
@@ -84,17 +84,17 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="jquery/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- font awesome js --}}
     <script src="https://kit.fontawesome.com/1f3ad3292f.js" crossorigin="anonymous"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="jquery/jquery.easing.min.js"></script>
+    <script src="/jquery/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
   </body>
 </html>

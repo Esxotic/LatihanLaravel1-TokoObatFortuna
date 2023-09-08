@@ -6,11 +6,11 @@ id="accordionSidebar"
     <!-- Sidebar - Brand -->
     <a
     class="sidebar-brand d-flex align-items-center justify-content-center"
-    href="index.html"
+    href="/"
     >
     <div class="sidebar-brand-icon">
         <i
-        ><img src="img/Untitled2.ico" alt="" class="img-circle" id="logo"
+        ><img src="/img/Untitled2.ico" alt="" class="img-circle" id="logo"
         /></i>
     </div>
     <div class="sidebar-brand-text mx-3">Fortuna</div>
@@ -23,19 +23,19 @@ id="accordionSidebar"
     <div class="sidebar-heading">Menu</div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+    <a class="nav-link" href="/">
         <i class="fa fa-tachometer" aria-hidden="true"></i>
         <span>Dashboard</span></a
     >
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-    <a class="nav-link" href="DaftarObat.html">
-        <i class="fa fa-plus-square" aria-hidden="true"></i>
-        <span>Daftar Obat</span></a
-    >
+    <li class="nav-item {{ Request::is('daftarObat*') ? 'active' : '' }}">
+        <a class="nav-link" href="/daftarObat">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <span>Daftar Obat</span></a
+        >
     </li>
 
     <!-- Nav Item - Tables -->
