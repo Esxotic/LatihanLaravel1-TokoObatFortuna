@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Jenis;
+use App\Models\Obat;
+use App\Models\Umur;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +19,41 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(3)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Obat::create([
+            'nama_obat' => 'Imodium',
+            'jenis_id' => 1,
+            'umur_id' => 2,
+            'harga' => 25000,
+            'stok' => 24,
+        ]);
+
+        Umur::create([
+            'nama' => 'Anak-anak'
+        ]);
+        Umur::create([
+            'nama' => 'Dewasa'
+        ]);
+        Umur::create([
+            'nama' => 'Lansia'
+        ]);
+
+        Jenis::create([
+            'nama' => 'Obat Bebas'
+        ]);
+        Jenis::create([
+            'nama' => 'Obat Bebas Terbatas'
+        ]);
+        Jenis::create([
+            'nama' => 'Obat Keras'
+        ]);
+        Jenis::create([
+            'nama' => 'Obat Herbal'
+        ]);
+        Jenis::create([
+            'nama' => 'Obat Wajib Apotek'
+        ]);
+        Jenis::create([
+            'nama' => 'Obat Golongan Narkotika'
+        ]);
     }
 }

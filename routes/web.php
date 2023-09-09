@@ -20,32 +20,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index', [
         'title' => 'Dashboard',
-        'heading' => 'Dashboard',
-        'active' => 'Dashboard'
+        'heading' => 'Dashboard'
     ]);
 })->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'autenticate']);
-
-Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
-
-// Route::get('/daftar-obat', function () {
-//     return view('daftar-obat.index', [
-//         'title' => 'Daftar Obat',
-//         'heading' => 'Daftar Obat',
-//         'active' => 'Daftar Obat',
-//         'obats' => obat::all()
-//     ]);
-// });
-Route::resource('/daftar-obat', DaftarObatController::class)->except('show')->middleware('auth');
-// Route::get('/tambahData', function () {
-//     return view('daftar-obat.fromTambah', [
-//         'title' => 'Form Tambah Data',
-//         'heading' => 'Form Tambah Data',
-//         'active' => 'Daftar Obat',
-//     ]);
-// });
+Route::resource('/daftarObat', DaftarObatController::class, ['parameters' => ['daftarObat' => 'obat']])->middleware('auth'); /* parameters digunakan untuk mengubah parameter pada route resource edit. parameter aslinya adalah daftarObat, ini bisa diganti manual pada route edit di $obat */
+Route::get('/transaksi', function () {
+    return view('transaksi.index', [
+        'title' => 'Transaksi',
+        'heading' => 'Transaksi'
+    ]);
+});

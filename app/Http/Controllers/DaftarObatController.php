@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\obat;
+use App\Models\Jenis;
+use App\Models\Obat;
 use App\Models\Umur;
-use App\Models\JenisObat;
 use Illuminate\Http\Request;
 
 class DaftarObatController extends Controller
@@ -14,11 +14,10 @@ class DaftarObatController extends Controller
      */
     public function index()
     {
-        return view('Daftar-Obat.index', [
+        return view('obat.index', [
             'title' => 'Daftar Obat',
             'heading' => 'Daftar Obat',
-            'active' => 'Daftar Obat',
-            'obats' => obat::all()
+            'obats' => Obat::all(),
         ]);
     }
 
@@ -27,11 +26,10 @@ class DaftarObatController extends Controller
      */
     public function create()
     {
-        return view('Daftar-Obat.create', [
-            'title' => 'Form Tambah Data',
-            'heading' => 'Form Tambah Data',
-            'active' => 'Daftar Obat',
-            'jenisObats' => JenisObat::all(),
+        return view('obat.create', [
+            'title' => 'Form Obat',
+            'heading' => 'Tambah Data',
+            'jenis' => Jenis::all(),
             'umurs' => Umur::all()
         ]);
     }
@@ -41,15 +39,15 @@ class DaftarObatController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama_obat' => 'required|max:255',
+        $vallidatedData = $request->validate([
+            'nama_obat' => 'required',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric',
             'jenis_id' => 'required',
-            'umur_id' => 'required',
-            'harga' => 'required|min:4',
-            'stok' => 'required'
+            'umur_id' => 'required'
         ]);
 
-        Obat::create($validatedData);
+        Obat::create($vallidatedData);
 
         return back();
     }
@@ -57,7 +55,7 @@ class DaftarObatController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(obat $obat)
+    public function show(Obat $obat)
     {
         //
     }
@@ -65,24 +63,42 @@ class DaftarObatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(obat $obat)
+    public function edit(Obat $obat)
     {
-        dd($obat);
+        return view('obat.edit', [
+            'title' => 'Form Edit',
+            'heading' => 'Form Edit',
+            'obat' => $obat,
+            'jenis' => Jenis::all(),
+            'umurs' => Umur::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, obat $obat)
+    public function update(Request $request, Obat $obat)
     {
-        //
+        $rules = [
+            'nama_obat' => 'required',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric',
+            'jenis_id' => 'required',
+            'umur_id' => 'required'
+        ];
+
+        $vallidatedData = $request->validate($rules);
+        Obat::where('id', $obat->id)->update($vallidatedData);
+
+        return redirect(route('daftarObat.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(obat $obat)
+    public function destroy(Obat $obat)
     {
-        //
+        Obat::destroy($obat->id);
+        return back();
     }
 }
