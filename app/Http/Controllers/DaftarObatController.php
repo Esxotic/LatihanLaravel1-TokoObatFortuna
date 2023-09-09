@@ -65,8 +65,13 @@ class DaftarObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        // dd(Obat::all());
-        dd($obat);
+        return view('obat.edit', [
+            'title' => 'Form Edit',
+            'heading' => 'Form Edit',
+            'obat' => $obat,
+            'jenis' => Jenis::all(),
+            'umurs' => Umur::all()
+        ]);
     }
 
     /**
@@ -74,7 +79,18 @@ class DaftarObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
-        //
+        $rules = [
+            'nama_obat' => 'required',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric',
+            'jenis_id' => 'required',
+            'umur_id' => 'required'
+        ];
+
+        $vallidatedData = $request->validate($rules);
+        Obat::where('id', $obat->id)->update($vallidatedData);
+
+        return redirect(route('daftarObat.index'));
     }
 
     /**
@@ -82,6 +98,7 @@ class DaftarObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
-        //
+        Obat::destroy($obat->id);
+        return back();
     }
 }

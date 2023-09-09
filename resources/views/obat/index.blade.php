@@ -40,9 +40,13 @@
                         <a href="{{ route('daftarObat.edit',$obat) }}" class="btn btn-warning">
                             <i class="fa fa-wrench" aria-hidden="true"></i>
                         </a>
-                        <a href="" class="btn btn-danger">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </a>
+                        <form action="{{ route('daftarObat.destroy',$obat) }}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

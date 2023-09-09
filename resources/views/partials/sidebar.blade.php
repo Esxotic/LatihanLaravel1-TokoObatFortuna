@@ -39,8 +39,8 @@ id="accordionSidebar"
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-    <a class="nav-link" href="Transaksi.html">
+    <li class="nav-item {{ Request::is('transaksi*') ? 'active' : '' }}">
+    <a class="nav-link" href="/transaksi">
         <i class="fa fa-exchange" aria-hidden="true"></i>
         <span>Transaksi</span></a
     >
