@@ -3,6 +3,7 @@
 use App\Http\Controllers\DaftarObatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TransaksiController;
 use App\Models\obat;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +32,5 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::resource('/daftarObat', DaftarObatController::class, ['parameters' => ['daftarObat' => 'obat']])->middleware('auth'); /* parameters digunakan untuk mengubah parameter pada route resource edit. parameter aslinya adalah daftarObat, ini bisa diganti manual pada route edit di $obat */
-Route::get('/transaksi', function () {
-    return view('transaksi.index', [
-        'title' => 'Transaksi',
-        'heading' => 'Transaksi'
-    ]);
-});
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::get('/transaksi/{id}', [TransaksiController::class, 'getObat'])->name('getObat');
