@@ -31,6 +31,7 @@
                 <div class="col-md-3">
                     <label for="nama_obat" class="form-label">Nama Obat</label><br />
                     <select class="form-select" aria-label="Default select example" id="nama_obat" name="nama_obat">
+                        <option selected>-Pilih Obat-</option>
                         @foreach ($obats as $obat)
                             @if (old('nama_obat') == $obat->nama_obat)
                                 <option value="{{ $obat->id }}" selected>{{ $obat->nama_obat }}</option>
@@ -48,7 +49,7 @@
 
                 <div class="col-md-3">
                     <label for="harga" class="form-label">Harga</label>
-                    <input type="number" class="form-control" id="harga" placeholder="Rp.17,000" readonly />
+                    <input type="number" class="form-control" id="harga" readonly />
                 </div>
 
                 <div class="col-md-3">
@@ -58,12 +59,12 @@
 
                 <div class="col-md-6">
                     <label for="bayar" class="form-label">Bayar</label>
-                    <input type="number" class="form-control" id="bayar" placeholder="" />
+                    <input type="text" class="form-control" id="bayar" placeholder="" />
                 </div>
 
                 <div class="col-md-6">
                     <label for="kembalian" class="form-label">Kembalian</label>
-                    <input type="number" class="form-control" id="kembalian" placeholder="" readonly />
+                    <input type="text" class="form-control" id="kembalian" placeholder="" readonly />
                 </div>
 
                 <div class="col-12 btnjerman text-center">
@@ -102,24 +103,32 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response != null) {
-                            $('#harga').val(response.harga);
+                            // $('#harga').val(response.harga);
+                            var harga1 = $('#harga');
+                            harga1.val(response.harga.toString().replace(
+                                /\B(?=(\d{3})+(?!\d))/g, "."));
                         }
-                        console.log(response);
                     }
                 })
             });
             $('#qty').on('keyup', function() {
                 var qty = $('#qty').val();
                 var harga = $('#harga').val();
-                var total = parseInt((qty * harga));
+                var total = parseFloat(qty * harga);
+                total = total.toFixed(3);
+                total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                 $('#total').val(total);
             });
-            $('#bayar').on('keyup', function() {
+            $('#bayar').on('input', function() {
+                var total = parseFloat($('#total').val().replace(/\./g, ""));
                 var bayar = $('#bayar').val();
-                var total = $('#total').val();
-                var kembalian = parseInt(bayar - total);
-                $('#kembalian').val(kembalian);
-            })
+                let fromattedBayar = bayar.replace(/\D/g, "");
+                fromattedBayar = fromattedBayar.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                $(this).val(fromattedBayar);
+                var kembalian = parseFloat(fromattedBayar.replace(/\./g, "") - total);
+                $('#kembalian').val(kembalian.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                console.log(fromattedBayar);
+            });
         });
     </script>
 @endsection
