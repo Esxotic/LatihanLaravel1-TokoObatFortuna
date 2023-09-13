@@ -27,7 +27,8 @@
 
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
-            <form class="row g-3">
+            <form action="/transaksi" method="POST" class="row g-3">
+                @csrf
                 <div class="col-md-3">
                     <label for="nama_obat" class="form-label">Nama Obat</label><br />
                     <select class="form-select" aria-label="Default select example" id="nama_obat" name="nama_obat">
@@ -44,12 +45,12 @@
 
                 <div class="col-md-3">
                     <label for="qty" class="form-label">Qty</label>
-                    <input type="number" class="form-control" id="qty" />
+                    <input type="number" class="form-control" id="qty" name="kuantiti" />
                 </div>
 
                 <div class="col-md-3">
                     <label for="harga" class="form-label">Harga</label>
-                    <input type="number" class="form-control" id="harga" readonly />
+                    <input type="text" class="form-control" id="harga" readonly name="harga" />
                 </div>
 
                 <div class="col-md-3">
@@ -68,17 +69,12 @@
                 </div>
 
                 <div class="col-12 btnjerman text-center">
-                    <button type="submit" class="btn btn-success btnj">
+                    <button type="submit" class="btn btn-success btnj" id="simpan">
                         Simpan
                     </button>
                     <button type="reset" class="btn btn-warning btnj">
                         Reset
                     </button>
-                    <a href="{{ route('daftarObat.index') }}">
-                        <button type="button" class="btn btn-danger btnj">
-                            Keluar
-                        </button>
-                    </a>
                 </div>
             </form>
         </div>
@@ -104,8 +100,7 @@
                     success: function(response) {
                         if (response != null) {
                             // $('#harga').val(response.harga);
-                            var harga1 = $('#harga');
-                            harga1.val(response.harga.toString().replace(
+                            $('#harga').val(response.harga.toString().replace(
                                 /\B(?=(\d{3})+(?!\d))/g, "."));
                         }
                     }
@@ -118,6 +113,7 @@
                 total = total.toFixed(3);
                 total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                 $('#total').val(total);
+                // console.log(harga);
             });
             $('#bayar').on('input', function() {
                 var total = parseFloat($('#total').val().replace(/\./g, ""));
@@ -127,7 +123,13 @@
                 $(this).val(fromattedBayar);
                 var kembalian = parseFloat(fromattedBayar.replace(/\./g, "") - total);
                 $('#kembalian').val(kembalian.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-                console.log(fromattedBayar);
+                // console.log(fromattedBayar);
+            });
+            $('#simpan').on('click', function() {
+                var harga = parseFloat($('#harga').val().replace(/\./g, ""));
+                var total = parseFloat($('#total').val().replace(/\./g, ""));
+                // console.log(harga);
+                // console.log(total);
             });
         });
     </script>
