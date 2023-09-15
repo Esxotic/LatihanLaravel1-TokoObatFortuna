@@ -58,14 +58,19 @@
                     <input type="text" class="form-control" id="total" placeholder="" readonly name="total" />
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="bayar" class="form-label">Bayar</label>
                     <input type="text" class="form-control" id="bayar" placeholder="" />
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="kembalian" class="form-label">Kembalian</label>
                     <input type="text" class="form-control" id="kembalian" placeholder="" readonly />
+                </div>
+
+                <div class="col-md-4">
+                    <label for="stok" class="form-label">stok</label>
+                    <input type="text" class="form-control" id="stok" placeholder="" readonly name="stok" />
                 </div>
 
                 <div class="col-12 btnjerman text-center">
@@ -86,6 +91,7 @@
             $('#nama_obat').on('change', function() {
                 var qty = $('#qty').val("");
                 var total = $('#total').val("");
+                var bayar = $('#stok').val("");
                 var bayar = $('#bayar').val("");
                 var total = $('#total').val("");
                 var kembalian = $('#kembalian').val("");
@@ -102,6 +108,7 @@
                             // $('#harga').val(response.harga);
                             $('#harga').val(response.harga.toString().replace(
                                 /\B(?=(\d{3})+(?!\d))/g, "."));
+                            $('#stok').val(response.stok);
                         }
                     }
                 })
@@ -123,13 +130,11 @@
                 $(this).val(fromattedBayar);
                 var kembalian = parseFloat(fromattedBayar.replace(/\./g, "") - total);
                 $('#kembalian').val(kembalian.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                total = parseInt($('#total').replace(/\./g, ""));
                 // console.log(fromattedBayar);
             });
             $('#simpan').on('click', function() {
-                var harga = parseFloat($('#harga').val().replace(/\./g, ""));
-                var total = parseFloat($('#total').val().replace(/\./g, ""));
-                // console.log(harga);
-                // console.log(total);
+                parseFloat($('#total').val().replace(/\./g, ""));
             });
         });
     </script>
