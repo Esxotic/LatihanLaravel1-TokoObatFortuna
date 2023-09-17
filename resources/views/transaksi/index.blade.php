@@ -31,10 +31,10 @@
                 @csrf
                 <div class="col-md-3">
                     <label for="nama_obat" class="form-label">Nama Obat</label><br />
-                    <select class="form-select" aria-label="Default select example" id="nama_obat" name="nama_obat">
+                    <select class="form-select" aria-label="Default select example" id="nama_obat" name="obat_id">
                         <option selected>-Pilih Obat-</option>
                         @foreach ($obats as $obat)
-                            @if (old('nama_obat') == $obat->nama_obat)
+                            @if (old('obat_id') == $obat->nama_obat)
                                 <option value="{{ $obat->id }}" selected>{{ $obat->nama_obat }}</option>
                             @else
                                 <option value="{{ $obat->id }}">{{ $obat->nama_obat }}</option>

@@ -10,4 +10,9 @@ class Transaksi extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class);
+    }
 }

@@ -24,7 +24,7 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_obat' => 'required',
+            'obat_id' => 'required',
             'kuantiti' => 'required|numeric',
             'harga' => 'required',
             'total' => 'required',
@@ -32,10 +32,10 @@ class TransaksiController extends Controller
         ]);
         // dd($validatedData);
 
-        $obat = Obat::find($validatedData['nama_obat']);
+        $obat = Obat::find($validatedData['obat_id']);
         $stok = $obat['stok'];
         $inputKuantiti = $validatedData['kuantiti'];
-        $transaksi = Transaksi::where('nama_obat', $validatedData['nama_obat']);
+        $transaksi = Transaksi::where('obat_id', $validatedData['obat_id']);
         $validatedData['total'] = str_replace(".", "", $validatedData['total']);
         // dd($stok);
 
@@ -43,7 +43,7 @@ class TransaksiController extends Controller
             return false;
         } else {
             $obat->decrement('stok', $inputKuantiti);
-            if ($transaksi->exists('nama_obat')) {
+            if ($transaksi->exists('obat_id')) {
                 $transaksi->incrementEach([
                     'kuantiti' => $validatedData['kuantiti'],
                     'total' => $validatedData['total'],

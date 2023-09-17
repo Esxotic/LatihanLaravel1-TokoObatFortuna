@@ -22,4 +22,8 @@ class Obat extends Model
     {
         return $this->belongsTo(Umur::class);
     }
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
 }
