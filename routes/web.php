@@ -5,7 +5,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransaksiController;
-use App\Models\obat;
+use App\Models\Obat;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index', [
         'title' => 'Dashboard',
-        'heading' => 'Dashboard'
+        'heading' => 'Dashboard',
+        'obats' => Obat::all(),
+        'transaksis' => Transaksi::all()
     ]);
 })->middleware('auth');
 
