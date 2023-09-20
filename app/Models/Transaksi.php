@@ -18,6 +18,6 @@ class Transaksi extends Model
     }
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subDay());
+        return static::where('created_at', '<=', now()->subMonth());
     }
 }
