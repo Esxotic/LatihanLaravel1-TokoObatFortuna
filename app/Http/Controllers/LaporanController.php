@@ -13,6 +13,7 @@ class LaporanController extends Controller
 {
     public function index()
     {
+        $this->authorize('pemilik');
         return view('laporan.index', [
             'title' => 'Laporan',
             'heading' => 'Laporan'
@@ -20,6 +21,8 @@ class LaporanController extends Controller
     }
     public function cetak()
     {
+        $this->authorize('pemilik');
+
         $transaksi = Transaksi::all();
 
         $pdf = PDF::loadview('laporan.laporan_pdf', [

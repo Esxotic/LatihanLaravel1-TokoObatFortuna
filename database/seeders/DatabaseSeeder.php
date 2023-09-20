@@ -17,9 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(3)->create();
         User::create([
-            'email' => 'wayanjerman@gmail.com',
+            'email' => 'kasir@gmail.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+        ]);
+        User::create([
+            'email' => 'admin@gmail.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+        ]);
+        User::create([
+            'email' => 'pemilik@gmail.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
         ]);
 
@@ -29,6 +36,13 @@ class DatabaseSeeder extends Seeder
             'umur_id' => 2,
             'harga' => 25000,
             'stok' => 24,
+        ]);
+        Obat::create([
+            'nama_obat' => 'Anakonidin',
+            'jenis_id' => 1,
+            'umur_id' => 1,
+            'harga' => 10000,
+            'stok' => 20,
         ]);
 
         Umur::create([

@@ -21,26 +21,32 @@
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Nav Item - Daftar Obat -->
-    <li class="nav-item {{ Request::is('daftarObat*') ? 'active' : '' }}">
-        <a class="nav-link" href="/daftarObat">
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
-            <span>Daftar Obat</span></a>
-    </li>
+    @can('admin')
+        <!-- Nav Item - Daftar Obat -->
+        <li class="nav-item {{ Request::is('daftarObat*') ? 'active' : '' }}">
+            <a class="nav-link" href="/daftarObat">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                <span>Daftar Obat</span></a>
+        </li>
+    @endcan
 
-    <!-- Nav Item - Transaksi -->
-    <li class="nav-item {{ Request::is('transaksi*') ? 'active' : '' }}">
-        <a class="nav-link" href="/transaksi">
-            <i class="fa fa-exchange" aria-hidden="true"></i>
-            <span>Transaksi</span></a>
-    </li>
+    @can('kasir')
+        <!-- Nav Item - Transaksi -->
+        <li class="nav-item {{ Request::is('transaksi*') ? 'active' : '' }}">
+            <a class="nav-link" href="/transaksi">
+                <i class="fa fa-exchange" aria-hidden="true"></i>
+                <span>Transaksi</span></a>
+        </li>
+    @endcan
 
-    <!-- Nav Item - laporan -->
-    <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
-        <a class="nav-link" href="/laporan">
-            <i class="fa fa-area-chart" aria-hidden="true"></i>
-            <span>Laporan</span></a>
-    </li>
+    @can('pemilik')
+        <!-- Nav Item - laporan -->
+        <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
+            <a class="nav-link" href="/laporan">
+                <i class="fa fa-area-chart" aria-hidden="true"></i>
+                <span>Laporan</span></a>
+        </li>
+    @endcan
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />

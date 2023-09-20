@@ -31,22 +31,20 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'autenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::resource('/daftarObat', DaftarObatController::class, ['parameters' => ['daftarObat' => 'obat']])->middleware('auth'); /* parameters digunakan untuk mengubah parameter pada route resource edit. parameter aslinya adalah daftarObat, ini bisa diganti manual pada route edit di $obat */
 
-Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::post('/transaksi', [TransaksiController::class, 'store']);
-Route::get('/transaksi/{id}', [TransaksiController::class, 'getObat'])->name('getObat');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/transaksi', [TransaksiController::class, 'index']);
+    Route::post('/transaksi', [TransaksiController::class, 'store']);
+    Route::get('/transaksi/{id}', [TransaksiController::class, 'getObat'])->name('getObat');
 
-Route::get('/laporan', [LaporanController::class, 'index']);
-Route::get('laporan/cetakLaporan', [LaporanController::class, 'cetak']);
+    Route::get('/laporan', [LaporanController::class, 'index']);
+    Route::get('laporan/cetakLaporan', [LaporanController::class, 'cetak']);
 
-Route::get('/temp', function () {
-    return view('laporan.laporan_pdf', [
-        'transaksis' => Transaksi::all()
-    ]);
+    Route::post('/logout', [LoginController::class, 'logout']);
 });

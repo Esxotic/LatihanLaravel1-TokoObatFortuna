@@ -14,6 +14,7 @@ class DaftarObatController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         return view('obat.index', [
             'title' => 'Daftar Obat',
             'heading' => 'Daftar Obat',
@@ -26,6 +27,7 @@ class DaftarObatController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin');
         return view('obat.create', [
             'title' => 'Form Obat',
             'heading' => 'Tambah Data',
@@ -39,8 +41,10 @@ class DaftarObatController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin');
+
         $vallidatedData = $request->validate([
-            'nama_obat' => 'required',
+            'nama_obat' => 'required|unique:obats',
             'stok' => 'required|numeric',
             'harga' => 'required|numeric',
             'jenis_id' => 'required',
@@ -65,6 +69,8 @@ class DaftarObatController extends Controller
      */
     public function edit(Obat $obat)
     {
+        $this->authorize('admin');
+
         return view('obat.edit', [
             'title' => 'Form Edit',
             'heading' => 'Form Edit',
@@ -79,8 +85,10 @@ class DaftarObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
+        $this->authorize('admin');
+
         $rules = [
-            'nama_obat' => 'required',
+            'nama_obat' => 'required|unique:obats',
             'stok' => 'required|numeric',
             'harga' => 'required|numeric',
             'jenis_id' => 'required',
@@ -98,6 +106,8 @@ class DaftarObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
+        $this->authorize('admin');
+
         Obat::destroy($obat->id);
         return back();
     }

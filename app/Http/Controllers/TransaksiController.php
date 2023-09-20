@@ -10,6 +10,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
+        $this->authorize('kasir');
         return view('transaksi.index', [
             'title' => 'Transaksi',
             'heading' => 'Transaksi',
@@ -18,11 +19,15 @@ class TransaksiController extends Controller
     }
     public function getObat($id)
     {
+        $this->authorize('kasir');
+
         $obat = Obat::where('id', $id)->first();
         return response()->json($obat);
     }
     public function store(Request $request)
     {
+        $this->authorize('kasir');
+
         $validatedData = $request->validate([
             'obat_id' => 'required',
             'kuantiti' => 'required|numeric',
