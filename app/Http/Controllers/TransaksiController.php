@@ -45,7 +45,7 @@ class TransaksiController extends Controller
         // dd($stok);
 
         if ($stok < 1 || $inputKuantiti > $stok) {
-            return false;
+            return back()->with('failed', 'Stok obat tidak cukup/kosong!');
         } else {
             $obat->decrement('stok', $inputKuantiti);
             if ($transaksi->exists('obat_id')) {
@@ -53,8 +53,10 @@ class TransaksiController extends Controller
                     'kuantiti' => $validatedData['kuantiti'],
                     'total' => $validatedData['total'],
                 ]);
+                return back()->with('success', 'Data berhasil tersimpan!');
             } else {
                 Transaksi::create($validatedData);
+                return back()->with('success', 'Data berhasil tersimpan!');
             }
         }
     }

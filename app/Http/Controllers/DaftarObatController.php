@@ -6,6 +6,7 @@ use App\Models\Jenis;
 use App\Models\Obat;
 use App\Models\Umur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DaftarObatController extends Controller
 {
@@ -18,7 +19,7 @@ class DaftarObatController extends Controller
         return view('obat.index', [
             'title' => 'Daftar Obat',
             'heading' => 'Daftar Obat',
-            'obats' => Obat::all(),
+            'obats' => Obat::paginate(4)->withQueryString(),
         ]);
     }
 
@@ -53,7 +54,7 @@ class DaftarObatController extends Controller
 
         Obat::create($vallidatedData);
 
-        return back();
+        return back()->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -88,7 +89,7 @@ class DaftarObatController extends Controller
         $this->authorize('admin');
 
         $rules = [
-            'nama_obat' => 'required|unique:obats',
+            'nama_obat' => 'required',
             'stok' => 'required|numeric',
             'harga' => 'required|numeric',
             'jenis_id' => 'required',
@@ -98,7 +99,7 @@ class DaftarObatController extends Controller
         $vallidatedData = $request->validate($rules);
         Obat::where('id', $obat->id)->update($vallidatedData);
 
-        return redirect(route('daftarObat.index'));
+        return redirect(route('daftarObat.index'))->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -109,6 +110,6 @@ class DaftarObatController extends Controller
         $this->authorize('admin');
 
         Obat::destroy($obat->id);
-        return back();
+        return back()->with('success', 'Data berhasil dihapus!');
     }
 }

@@ -6,16 +6,16 @@
             filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));
         }
 
-        form {
+        form.transaksi {
             padding: 20px 40px;
         }
 
-        form label {
+        form.transaksi label {
             margin-top: 10px;
             margin-bottom: -5px;
         }
 
-        form input {
+        form.transaksi input {
             margin-bottom: 10px;
         }
 
@@ -25,9 +25,21 @@
         }
     </style>
 
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-xl-12 col-lg-7" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif (session()->has('failed'))
+        <div class="alert alert-danger alert-dismissible fade show col-xl-12 col-lg-7" role="alert">
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
-            <form action="/transaksi" method="POST" class="row g-3">
+            <form action="/transaksi" method="POST" class="row g-3 transaksi">
                 @csrf
                 <div class="col-md-3">
                     <label for="nama_obat" class="form-label">Nama Obat</label><br />
