@@ -14,6 +14,13 @@ class Obat extends Model
     protected $guarded = ['id'];
     protected $with = ['jenis', 'umur'];
 
+    public function scopeCari($query, $search)
+    {
+        $query->when($search['search'] ?? false, function ($query, $cari) { /* $search digunakan untuk menangkap value dari $search['search] */
+            return $query->where('nama_obat', 'like', '%' . $cari . '%');
+        });
+    }
+
     public function jenis()
     {
         return $this->belongsTo(Jenis::class);

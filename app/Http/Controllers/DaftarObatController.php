@@ -16,10 +16,11 @@ class DaftarObatController extends Controller
     public function index()
     {
         $this->authorize('admin');
+        // dd(request('search'));
         return view('obat.index', [
             'title' => 'Daftar Obat',
             'heading' => 'Daftar Obat',
-            'obats' => Obat::paginate(4)->withQueryString(),
+            'obats' => Obat::orderBy('stok', 'asc')->cari(request(['search']))->paginate(4)->withQueryString(),
         ]);
     }
 
