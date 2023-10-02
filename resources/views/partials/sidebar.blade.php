@@ -40,7 +40,16 @@
     @endcan
 
     @can('pemilik')
-        <!-- Nav Item - laporan -->
+        <!-- Nav Item - Akun -->
+        <li class="nav-item {{ Request::is('akun*') ? 'active' : '' }}">
+            <a class="nav-link" href="/akun">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span>Akun</span></a>
+        </li>
+    @endcan
+
+    @can('pemilik')
+        <!-- Nav Item - Laporan -->
         <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
             <a class="nav-link" href="/laporan">
                 <i class="fa fa-area-chart" aria-hidden="true"></i>

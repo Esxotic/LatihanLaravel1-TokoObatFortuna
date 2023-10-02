@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DaftarObatController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransaksiController;
 use App\Models\Obat;
 use App\Models\Transaksi;
+use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaksi', [TransaksiController::class, 'index']);
     Route::post('/transaksi', [TransaksiController::class, 'store']);
     Route::get('/transaksi/{id}', [TransaksiController::class, 'getObat'])->name('getObat');
+
+    Route::resource('/akun', AkunController::class, ['parameters' => ['akun' => 'user']])->except('show');
 
     Route::get('/laporan', [LaporanController::class, 'index']);
     Route::get('laporan/cetakLaporan', [LaporanController::class, 'cetak']);
